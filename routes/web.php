@@ -41,6 +41,12 @@ Route::post('/add_category', [AdminController::class, 'add_category']);
 
 Route::get('/delete_category/{id}', [AdminController::class, 'delete_category']);
 
+Route::get('/view_brand', [AdminController::class, 'view_brand']);
+
+Route::post('/add_brand', [AdminController::class, 'add_brand']);
+
+Route::get('/delete_brand/{id}', [AdminController::class, 'delete_brand']);
+
 Route::get('/view_product', [AdminController::class, 'view_product']);
 
 Route::post('/add_product', [AdminController::class, 'add_product']);
@@ -55,13 +61,43 @@ Route::post('/update_product_confirm/{id}', [AdminController::class, 'update_pro
 
 Route::get('/order', [AdminController::class, 'order']);
 
-Route::get('/delivered/{id}', [AdminController::class, 'delivered']);
+
+Route::get('/profile', [AdminController::class, 'profile']);
+
+Route::get('/delivered', [AdminController::class, 'delivered']);
+
+Route::get('/users', [AdminController::class, 'users']);
+
+Route::get('/update_user/{id}', [AdminController::class, 'update_user']);
+
+Route::post('/update_user_confirm/{id}', [AdminController::class, 'update_user_confirm']);
+
+Route::get('/delete_users/{id}', [AdminController::class, 'delete_users']);
+
+Route::get('/comment', [AdminController::class, 'comment']);
+
+Route::get('/delete_comment/{id}', [AdminController::class, 'delete_comment']);
+
+Route::get('/show_comment/{id}', [AdminController::class, 'show_comment']);
+
+Route::get('/delivered_order/{id}', [AdminController::class, 'delivered_order']);
+
+
+
+
+//Route::get('/contact', [HomeController::class, 'createForm']);
+Route::post('/comment', [HomeController::class, 'comment'])->name('comment');
+
 
 
 
 
 
 Route::get('/shop', [HomeController::class, 'shop']);
+
+
+
+Route::get('/contact', [HomeController::class, 'contact']);
 
 Route::get('/product_page/{id}', [HomeController::class, 'product_page']);
 
@@ -74,6 +110,37 @@ Route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart']);
 Route::get('/cash_order', [HomeController::class, 'cash_order']);
 
 Route::get('/stripe/{totalprice}', [HomeController::class, 'stripe']);
+
+Route::get('/product_search', [HomeController::class, 'product_search']);
+Route::get('/UsedShoesSearch', [HomeController::class, 'UsedShoesSearch']);
+
+Route::get('/user_profile', [HomeController::class, 'user_profile']);
+
+Route::get('/update_user', [HomeController::class, 'update_user']);
+
+Route::get('/update_user_confirm', [HomeController::class, 'update_user_confirm']);
+
+Route::get('/used_shoes', [HomeController::class, 'used_shoes']);
+
+
+Route::get('/view_product_used', [HomeController::class, 'view_product_used']);
+
+Route::post('/add_product_used', [HomeController::class, 'add_product_used']);
+
+Route::get('/used_shoes', [HomeController::class, 'used_shoes']);
+
+Route::get('/used_product_page/{id}', [HomeController::class, 'used_product_page']);
+
+Route::get('/delete_used_product/{id}', [HomeController::class, 'delete_used_product']);
+
+Route::get('/update_used_product/{id}', [HomeController::class, 'update_used_product']);
+
+Route::post('/update_used_product_confirm/{id}', [HomeController::class, 'update_used_product_confirm']);
+
+
+
+
+
 
 
 

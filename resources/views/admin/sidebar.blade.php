@@ -79,21 +79,75 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item menu-items">
-        <a class="nav-link" href="{{url('view_category')}}">
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('users')}}">
+          <span class="menu-icon">
+              <i class="mdi mdi-account-box-outline"></i>
+          </span>
+                <span class="menu-title">Users</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('order')}}">
+          <span class="menu-icon">
+              <i class="mdi mdi-airplane-takeoff"></i>
+          </span>
+                <span class="menu-title">Order</span>
+            </a>
+        </li>
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('delivered')}}">
+          <span class="menu-icon">
+              <i class="mdi mdi-checkbox-marked-circle-outline"></i>
+          </span>
+                <span class="menu-title">Delivered</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('view_category')}}">
           <span class="menu-icon">
             <i class="mdi mdi-playlist-play"></i>
           </span>
-          <span class="menu-title">Category</span>
-        </a>
-      </li>
-      <li class="nav-item menu-items">
-        <a class="nav-link" href="{{url('order')}}">
+                <span class="menu-title">Category</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('view_brand')}}">
           <span class="menu-icon">
-              <i class="mdi mdi-playlist-play"></i>
+            <i class="mdi mdi-playlist-play"></i>
           </span>
-          <span class="menu-title">order</span>
-        </a>
-      </li>
+                <span class="menu-title">Brand</span>
+            </a>
+        </li>
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('comment')}}">
+          <span class="menu-icon">
+              <i class="mdi mdi-emoticon-happy"></i>
+          </span>
+                <span class="menu-title">Comment</span>
+            </a>
+        </li>
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="#">
+          <span class="menu-icon">
+              <i class="mdi mdi-comment-account"></i>
+          </span>
+                <span class="menu-title">Contacts</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('profile')}}">
+          <span class="menu-icon">
+              <i class="mdi mdi-comment-account"></i>
+          </span>
+                <span class="menu-title">my</span>
+            </a>
+        </li>
     </ul>
+
+
+
   </nav>

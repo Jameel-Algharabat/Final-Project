@@ -113,13 +113,13 @@
                                 <div class="row">
                                     <div class="col-9">
                                         <div class="d-flex align-items-center align-self-start">
-                                            <h3 class="font-weight-normal">Order Processing</h3>
+                                            <h3 class="font-weight-normal">Total Comment</h3>
 
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="icon icon-box-success ">
-                                            <h3 class="mb-0">{{$total_processing}}</h3>
+                                            <h3 class="mb-0">{{$total_comment}}</h3>
                                         </div>
                                     </div>
                                 </div>

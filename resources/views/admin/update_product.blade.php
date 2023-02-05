@@ -198,6 +198,30 @@
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Product Image </label>
                             </div>
+                            <div class="input-container ic1">
+                                <label for="firstname"  class="placeholder">Product Size</label>
+                            </div>
+
+                            <div class="input-container ic1">
+                                <select class="input" name="brand">
+
+
+                                    <option value="{{$product->brand}}">
+                                        {{$product->brand}}
+                                    </option>
+
+                                    @foreach($brand as $brand)
+                                        <option value="{{$brand->brand_name}}">
+                                            {{$brand->brand_name}}
+                                        </option>
+                                    @endforeach
+
+
+                                </select>
+                                <label for="firstname"  class="placeholder">product category</label>
+                            </div>
+
+
 
 
 

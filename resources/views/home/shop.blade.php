@@ -111,8 +111,10 @@
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                             </div>
                         </div>
-                        <a href="#" class="filter-btn">Filter</a>
+                        <button href="#" type="submit" class="filter-btn">Filter</button>
                     </div>
+
+
 {{--                    <div class="filter-widget">--}}
 {{--                        <h4 class="fw-title">Color</h4>--}}
 {{--                        <div class="fw-color-choose">--}}
@@ -176,41 +178,35 @@
 {{--                        </div>--}}
                     </div>
                 </div>
-                <div class="col-lg-9 order-1 order-lg-2">
-                    <div class="product-show-option">
-                        <div class="row">
-                            <div class="col-lg-7 col-md-7">
-                                <div class="select-option">
-                                    <select class="sorting">
-                                        <option value="">Default Sorting</option>
-                                    </select>
-                                    <select class="p-show">
-                                        <option value="">Show:</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 col-md-5 text-right">
-                                <p>Show 01- 09 Of 36 Product</p>
-                            </div>
-                        </div>
-                    </div>
+
+
+
+                    <div class="col-lg-9 order-1 order-lg-2">
+
+
                     <div class="product-list">
                         <div class="row">
+{{--                            <div class="input-group">--}}
+{{--                                <form action="{{url('product_search')}}" method="GET">--}}
+{{--                                    @csrf--}}
+{{--                                    <input type="text" name="search" placeholder="What do you need?">--}}
+{{--                                    <button type="submit" class="m"><i class="ti-search"></i></button>--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
 
                             @foreach($product as $products)
-
 
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
                                         <img src="/product/{{$products->image}}" width="150px" height="250px" alt="">
                                         <div class="icon">
-                                            <i class="icon_heart_alt"></i>
+                                           <a ></a>
                                         </div>
                                         <ul>
-{{--                                            <li class="w-icon active"><a href=""><i class="icon_bag_alt"></i></a></li>--}}
+                                            <li class="w-icon active"><a href="{{url('add_cart',$products->id)}}"><i class="icon_bag_alt"></i></a></li>
                                             <li class="quick-view"><a href="{{url('product_page',$products->id)}}">+ Quick View</a></li>
-{{--                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>--}}
+                                            <li class="w-icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">
@@ -236,6 +232,9 @@
 
                             @endforeach
 
+
+
+
                             <span style="color: #0a0a0a; margin: auto; " >
 
                                 {!! $product->withQueryString()->links('pagination::bootstrap-5') !!}
@@ -256,45 +255,23 @@
     </section>
     <!-- Product Shop Section End -->
 
-    <!-- Partner Logo Section Begin -->
-    <div class="partner-logo">
-        <div class="container">
-            <div class="logo-carousel owl-carousel">
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-1.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-2.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-3.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-4.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-5.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Partner Logo Section End -->
+
 
     <!-- Footer Section Begin -->
     @include('home.footer')
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+    </script>
     <script src="home/js/jquery-3.3.1.min.js"></script>
     <script src="home/js/bootstrap.min.js"></script>
     <script src="home/js/jquery-ui.min.js"></script>

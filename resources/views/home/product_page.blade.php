@@ -24,6 +24,46 @@
     <link rel="stylesheet" href="home/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="home/css/style.css" type="text/css">
 </head>
+<style>
+
+    .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+    }
+    .rate:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+    }
+    .rate:not(:checked) > label {
+        float:right;
+        width:1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:30px;
+        color:#ccc;
+    }
+    .rate:not(:checked) > label:before {
+        content: '★ ';
+    }
+    .rate > input:checked ~ label {
+        color: #ffc700;
+    }
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+        color: #deb217;
+    }
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+    }
+
+    /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+</style>
 
 <body>
 <!-- Page Preloder -->
@@ -49,7 +89,7 @@
     </div>
 </div>
 <!-- Breadcrumb Section Begin -->
-
+{{--@include('home.messages')--}}
 <!-- Product Shop Section Begin -->
 <section class="product-shop spad">
     <div class="container">
@@ -265,65 +305,70 @@
                                     <div class="customer-review-option">
                                         <h4>2 Comments</h4>
                                         <div class="comment-option">
+                                            @foreach($reviews as $rs)
+
                                             <div class="co-item">
                                                 <div class="avatar-pic">
-                                                    <img src="img/product-single/avatar-1.png" alt="">
+                                                    <img src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" alt="">
                                                 </div>
                                                 <div class="avatar-text">
                                                     <div class="at-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star @if ($rs->rate<1)-o empty @endif"></i>
+                                                        <i class="fa fa-star @if ($rs->rate<2)-o empty @endif"></i>
+                                                        <i class="fa fa-star @if ($rs->rate<3)-o empty @endif"></i>
+                                                        <i class="fa fa-star @if ($rs->rate<4)-o empty @endif"></i>
+                                                        <i class="fa fa-star @if ($rs->rate<5)-o empty @endif"></i>
                                                     </div>
-                                                    <h5>Brandon Kelley <span>27 Aug 2019</span></h5>
-                                                    <div class="at-reply">Nice !</div>
+                                                    <h5>{{$rs->user->name}} <span>{{$rs->created_at}}</span></h5>
+                                                    <div class="at-reply">{{$rs->subject}}</div>
+                                                    <span>{{$rs->review}}</span>
                                                 </div>
                                             </div>
-                                            <div class="co-item">
-                                                <div class="avatar-pic">
-                                                    <img src="img/product-single/avatar-2.png" alt="">
-                                                </div>
-                                                <div class="avatar-text">
-                                                    <div class="at-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <h5>Roy Banks <span>27 Aug 2019</span></h5>
-                                                    <div class="at-reply">Nice !</div>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
-                                        <div class="personal-rating">
-                                            <h6>Your Ratind</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                        </div>
+
+<br>
                                         <div class="leave-comment">
                                             <h4>Leave A Comment</h4>
-                                            <form action="#" class="comment-form">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <input type="text" placeholder="Name">
+                                            <form action="{{url('comment')}}" class="comment-form" method="post">
+                                                @csrf
+                                                <div class="personal-rating">
+                                                    <h6>Your Ratind</h6>
+                                                    <div class="rate">
+                                                        <input type="radio" id="star5" name="rate" value="5" required/>
+                                                        <label for="star5" title="text">5 stars</label>
+
+                                                        <input type="radio" id="star4" name="rate" value="4" />
+                                                        <label for="star4" title="text">4 stars</label>
+
+                                                        <input type="radio" id="star3" name="rate" value="3" />
+                                                        <label for="star3" title="text">3 stars</label>
+
+                                                        <input type="radio" id="star2" name="rate" value="2" />
+                                                        <label for="star2" title="text">2 stars</label>
+
+                                                        <input type="radio" id="star1" name="rate" value="1" />
+                                                        <label for="star1" title="text">1 star</label>
                                                     </div>
-                                                    <div class="col-lg-6">
-                                                        <input type="text" placeholder="Email">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="">
+                                                        <input type="hidden" value="{{ $product->id}}" name="product_id" required>
                                                     </div>
                                                     <div class="col-lg-12">
-                                                        <textarea placeholder="Messages"></textarea>
+                                                        <input type="text" placeholder="subject" name="subject" required>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <textarea placeholder="Your Review" name="review" required></textarea>
+                                                        @auth()
                                                         <button type="submit" class="site-btn">Send message</button>
+                                                        @else
+                                                            <a href="{{ route('login') }}" style="color: red" class="site-btn">For submit Your Review, Please Login</a>
+                                                        @endauth
                                                     </div>
                                                 </div>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -344,6 +389,7 @@
 <!-- Footer Section End -->
 
 <!-- Js Plugins -->
+
 <script src="home/js/jquery-3.3.1.min.js"></script>
 <script src="home/js/bootstrap.min.js"></script>
 <script src="home/js/jquery-ui.min.js"></script>

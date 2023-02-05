@@ -57,11 +57,11 @@
                                 <th>
 {{--                                    <a onclick="return confirm('Are You Sure To Delete This')" type="button" class="btn btn-outline-danger btn-fw" href="">Delete</a>--}}
 {{--                                    <br><br>--}}
-                                    @if($order->delivery_status=='processing')
-                                    <a type="button" class="btn btn-outline-primary btn-fw" onclick="return confirm('Are you sure this product is delivered !!!')" href="{{url('delivered',$order->id)}}">Delivered</a>
-                                    @else
-                                    <p style="color: #00a045">Delivered</p>
-                                    @endif
+{{--                                    @if($order->delivery_status=='processing')--}}
+                                    <a type="button" class="btn btn-outline-primary btn-fw" onclick="return confirm('Are you sure this product is delivered !!!')" href="{{url('delivered_order',$order->id)}}">Delivered</a>
+{{--                                    @else--}}
+{{--                                    <p style="color: #00a045">Delivered</p>--}}
+{{--                                    @endif--}}
                                 </th>
 
                             </tr>

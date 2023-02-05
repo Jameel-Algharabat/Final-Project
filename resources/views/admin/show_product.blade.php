@@ -36,6 +36,7 @@
                                     <th>  Price </th>
                                     <th> Discount Price </th>
                                     <th> category </th>
+                                    <th> brand </th>
                                     <th> Action </th>
                                 </tr>
                             </thead>
@@ -50,6 +51,8 @@
                                 <th> {{$product->price}} </th>
                                 <th> {{$product->discount_price}} </th>
                                 <th> {{$product->category}} </th>
+                                <th> {{$product->brand}} </th>
+
                                 <th>
                                     <a onclick="return confirm('Are You Sure To Delete This')" type="button" class="btn btn-outline-danger btn-fw" href="{{url('delete_product',$product->id)}}">Delete</a>
                                     <br><br>

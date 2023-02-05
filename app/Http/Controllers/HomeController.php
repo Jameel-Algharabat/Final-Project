@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\brand;
+use App\Models\Delivered;
+use App\Models\usedShoes;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+
 use App\Models\User;
+
+use App\Models\comment;
+
 
 use App\Models\categories;
 
@@ -54,9 +62,10 @@ class HomeController extends Controller
         if($usertype=='1')
         {
             $total_product=product::all()->count();
+
             $total_order=order::all()->count();
             $total_user=user::all()->count();
-            $order=order::all();
+            $order=Delivered::all();
             $total_revenue=0;
 
             foreach ($order as $order)
@@ -64,12 +73,13 @@ class HomeController extends Controller
                 $total_revenue=$total_revenue + $order->price;
             }
 
-            $total_delivered=order::where('delivery_status','=','delivered')->get()->count();
+            $total_delivered=Delivered::all()->count();
+            $total_comment=comment::all()->count();
 
-            $total_processing=order::where('delivery_status','=','processing')->get()->count();
+//            $total_processing=order::where('delivery_status','=','processing')->get()->count();
 
 
-            return view('admin.home',compact('total_product','total_order','total_user','order','total_revenue','total_delivered','total_processing'));
+            return view('admin.home',compact('total_product','total_order','total_user','order','total_revenue','total_delivered','total_comment'));
 
         }
 
@@ -89,7 +99,8 @@ class HomeController extends Controller
     public function product_page($id)
     {
        $product=product::find($id);
-        return view('home.product_page',compact('product'));
+        $reviews= comment::where('product_id',$id)->get();
+        return view('home.product_page',['reviews'=>$reviews],compact('product'));
     }
 
     public function add_cart(Request $request,$id)
@@ -98,7 +109,7 @@ class HomeController extends Controller
         if (Auth::id())
         {
            $user=Auth::user();
-           $product=product::find($id);
+           $products=product::find($id);
 
            $cart=new cart;
 
@@ -109,19 +120,19 @@ class HomeController extends Controller
             $cart->user_id=$user->id;
 
 
-            $cart->product_title=$product->title;
+            $cart->product_title=$products->title;
 
-            if($product->discount_price!=null)
+            if($products->discount_price!=null)
             {
-                $cart->price=$product->discount_price * $request->quantity;
+                $cart->price=$products->discount_price * $request->quantity;
             }
             else
             {
-                $cart->price=$product->price * $request->quantity;
+                $cart->price=$products->price * $request->quantity;
             }
 
-            $cart->image=$product->image;
-            $cart->product_id=$product->id;
+            $cart->image=$products->image;
+            $cart->product_id=$products->id;
 
             $cart->quantity=$request->quantity;
 
@@ -215,6 +226,174 @@ class HomeController extends Controller
 
         return view('home.stripe');
     }
+
+    public function product_search(Request $request)
+    {
+        $search_text=$request->search;
+        $product=product::where('title','LIKE',"%$search_text%")->orwhere('category','LIKE',"%$search_text%")->orwhere('brand','LIKE',"%$search_text%")->paginate(10);
+        return view('home.shop',compact('product'));
+    }
+    public function UsedShoesSearch(Request $request)
+    {
+        $search_Used=$request->search;
+        $product=usedShoes::where('title','LIKE',"%$search_Used%")->orwhere('category','LIKE',"%$search_Used%")->orwhere('brand','LIKE',"%$search_Used%")->paginate(10);
+        return view('home.used_shoes',compact('product'));
+    }
+    public function contact()
+    {
+
+        return view('home.contact');
+    }
+
+    public function comment(Request $request)
+    {
+        //dd($request);
+        $data = new comment();
+        $data->user_id = Auth::id();
+        $data->product_id = $request->input('product_id');
+        $data->subject = $request->input('subject');
+        $data->review = $request->input('review');
+        $data->rate = $request->input('rate');
+        $data->ip = request()->ip();
+        $data->save();
+
+//        return redirect()->route('product_page',['id'=>$request->input('product_id')])->with('info','hhhhhh');
+        return redirect()->back()->with('message','Product deleted Successfully');
+
+
+
+    }
+
+    public function user_profile()
+    {
+
+        $id=Auth::user()->id;
+
+
+        $product=usedShoes::where('user_id','=',$id)->get();
+
+
+
+        $users=User::all();
+
+        return view('home.user_profile',compact('users','product'));
+    }
+    public function update_user()
+    {
+
+        return view('home.update_user');
+    }
+
+    public function update_user_confirm(Request $request)
+    {
+        $validated =Validated::make($request->all(),[
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'min:10','max:10'],
+            'address' => ['required', 'max:50'],
+        ]);
+
+        return redirect()->back()->with('message','Product update Successfully');
+    }
+    public function used_shoes()
+    {
+
+        $product=usedShoes::all();
+        return view('home.used_shoes',compact('product'));
+    }
+
+    /////////////////////////////////////////
+
+
+    public function view_product_used()
+    {
+        $category=categories::all();
+        $brand=brand::all();
+
+        return view('home.add_product',compact('category','brand'));
+    }
+
+    public function add_product_used(Request $request)
+    {
+
+        $product=new usedShoes();
+        $product->user_id = Auth::id();
+        $product->title=$request->title;
+        $product->description=$request->description;
+        $product->price=$request->price;
+        $product->category=$request->category;
+        $product->brand=$request->brand;
+        $product->size=$request->size;
+
+
+        $image=$request->image;
+        $imagename=time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('product',$imagename);
+        $product->image=$imagename;
+
+        $product->save();
+
+        return redirect()->back()->with('message','Product Added Successfully');
+
+    }
+    public function used_product_page($id)
+    {
+        $product=usedShoes::find($id);
+        $reviews= comment::where('product_id',$id)->get();
+        return view('home. used_product_page',['reviews'=>$reviews],compact('product'));
+    }
+    public function delete_used_product($id)
+    {
+        $product=usedShoes::find($id);
+
+        $product->delete();
+
+        return redirect()->back()->with('message','Product deleted Successfully');
+
+    }
+    public function update_used_product($id)
+    {
+        $product=usedShoes::find($id);
+
+        $category=categories::all();
+
+        $brand=brand::all();
+
+
+        return view('home.update_used_product',compact('product','category','brand'));
+    }
+    public function update_used_product_confirm(Request $request,$id)
+    {
+        $product=usedShoes::find($id);
+        $product->title=$request->title;
+        $product->description=$request->description;
+        $product->price=$request->price;
+        $product->size=$request->size;
+        $product->category=$request->category;
+        $product->brand=$request->brand;
+        $image=$request->image;
+
+        if($image)
+        {
+            $imagename=time().'.'.$image->getClientOriginalExtension();
+
+            $request->image->move('product',$imagename);
+
+            $product->image=$imagename;
+        }
+
+        $product->save();
+
+        return redirect()->back();
+
+
+    }
+
+
+
+
+
+
 
 
 }

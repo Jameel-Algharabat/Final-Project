@@ -81,7 +81,7 @@
                             <td class="cart-title first-row">
                                 <h5>{{$cart->product_title}}</h5>
                             </td>
-                            <td class="p-price first-row">{{$cart->price}}</td>
+                            <td class="p-price first-row">${{$cart->price}}</td>
                             <td class="total-price first-row">{{$cart->quantity}}</td>
                             <td class="close-td first-row"> <a href="{{url('/remove_cart',$cart->id)}}" onclick="return confirm('Are you sure to remove this product ?')"><i class="ti-close"></i></a></td>
                         </tr>
@@ -91,27 +91,27 @@
                     </table>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="cart-buttons">
-                            <a href="#" class="primary-btn continue-shop">Continue shopping</a>
-                            <a href="#" class="primary-btn up-cart">Update cart</a>
-                        </div>
-                        <div class="discount-coupon">
-                            <h6>Discount Codes</h6>
-                            <form action="#" class="coupon-form">
-                                <input type="text" placeholder="Enter your codes">
-                                <button type="submit" class="site-btn coupon-btn">Apply</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 offset-lg-4">
+{{--                    <div class="col-lg-4">--}}
+{{--                        <div class="cart-buttons">--}}
+{{--                            <a href="#" class="primary-btn continue-shop">Continue shopping</a>--}}
+{{--                            <a href="#" class="primary-btn up-cart">Update cart</a>--}}
+{{--                        </div>--}}
+{{--                        <div class="discount-coupon">--}}
+{{--                            <h6>Discount Codes</h6>--}}
+{{--                            <form action="#" class="coupon-form">--}}
+{{--                                <input type="text" placeholder="Enter your codes">--}}
+{{--                                <button type="submit" class="site-btn coupon-btn">Apply</button>--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+                    <div class="col-lg-4 offset-lg-8">
                         <div class="proceed-checkout">
                             <ul>
 {{--                                <li class="subtotal">Subtotal <span>$240.00</span></li>--}}
-                                <li class="cart-total">Total <span>{{$totalprice}} <span></li>
+                                <li class="cart-total">Total <span>${{$totalprice}} <span></li>
                             </ul>
-                            <a href="{{url('stripe',$totalprice)}}" class="proceed-btn" style="margin-top: 5px">PAY USING CARD</a>
-                            <a href="{{url('cash_order')}}" class="proceed-btn" style="margin-top: 5px">CASH ON DELIVERY</a>
+{{--                            <a href="{{url('stripe',$totalprice)}}" class="proceed-btn" style="margin-top: 5px">PAY USING CARD</a>--}}
+                            <a href="{{url('cash_order')}}" class="proceed-btn" >CASH ON DELIVERY</a>
 
                         </div>
                     </div>
@@ -120,37 +120,7 @@
         </div>
     </div>
 </section>
-<div class="partner-logo">
-    <div class="container">
-        <div class="logo-carousel owl-carousel">
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-1.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-2.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-3.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-4.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-5.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- Partner Logo Section End -->
 
 <!-- Footer Section Begin -->

@@ -173,6 +173,42 @@
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Product Description</label>
                             </div>
+                            <div class="input-container ic1">
+                                <select class="input" name="brand">
+
+                                    @foreach($brand as $brand)
+                                        <option value="{{$brand->brand_name}}">
+                                            {{$brand->brand_name}}
+                                        </option>
+                                    @endforeach
+
+                                </select>
+                                <label for="firstname"  class="placeholder">product catego ry</label>
+                            </div>
+
+{{--                            <div class="input-container ic1">--}}
+{{--                                <select class="input" name="size">--}}
+
+{{--                                    <option >--}}
+{{--                                        XS--}}
+{{--                                    </option>--}}
+{{--                                    <option >--}}
+{{--                                        S--}}
+{{--                                    </option>--}}
+{{--                                    <option>--}}
+{{--                                        M--}}
+{{--                                    </option>--}}
+{{--                                    <option>--}}
+{{--                                        L--}}
+{{--                                    </option>--}}
+{{--                                    <option>--}}
+{{--                                        XL--}}
+{{--                                    </option>--}}
+
+
+{{--                                </select>--}}
+{{--                                <label for="firstname"  class="placeholder">Product Size</label>--}}
+{{--                            </div>--}}
 
                             <div class="input-container ic1">
                                 <input id="" class="input" type="number" name="price" placeholder=" " />
