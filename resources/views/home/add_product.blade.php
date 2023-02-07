@@ -2,27 +2,10 @@
 <html lang="zxx">
 
 <head>
-    <base href="/public">
-    <meta charset="UTF-8">
-    <meta name="description" content="Fashi Template">
-    <meta name="keywords" content="Fashi, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    @include('home.head')
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="home/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/themify-icons.css" type="text/css">
-    <link rel="stylesheet" href="home/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="home/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="home/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/style.css" type="text/css">
 </head>
 
 
@@ -81,75 +64,85 @@
                                 </div>
 
                                 <div class="group-input">
-                                    <label for="firstname" class="placeholder">Product Description</label>
+                                    <label for="firstname" >Product Description</label>
                                     <input id="" class="input" type="text" name="description" placeholder=" " />
                                 </div>
                                 <div class="group-input">
-                                    <label for="firstname" class="placeholder">Product price </label>
+                                    <label for="firstname" >Product price </label>
 
                                     <input id="" class="input" type="number" name="price" placeholder=" " />
                                     <div class="cut"></div>
                                 </div>
                                 <div class="group-input">
-                                    <label for="firstname"  class="placeholder">product brand</label>
+                                    <label for="firstname" >phone</label>
 
-                                    <select class="input" name="brand">
-
-                                        @foreach($brand as $brand)
-                                            <option value="{{$brand->brand_name}}">
-                                                {{$brand->brand_name}}
-                                            </option>
-                                        @endforeach
-
-                                    </select>
+                                    <input id="" class="input" type="number" name="user_phone" placeholder=" " />
+                                    <div class="cut"></div>
                                 </div>
-
-                                                            <div class="group-input">
-                                                                <label for="firstname"  class="placeholder">Product Size</label>
-
-                                                                <select class="input" name="size">
-
-                                                                    <option >
-                                                                        XS
-                                                                    </option>
-                                                                    <option >
-                                                                        S
-                                                                    </option>
-                                                                    <option>
-                                                                        M
-                                                                    </option>
-                                                                    <option>
-                                                                        L
-                                                                    </option>
-                                                                    <option>
-                                                                        XL
-                                                                    </option>
-
-
-                                                                </select>
-                                                            </div>
                                 <div class="group-input">
-                                    <label for="firstname"  class="placeholder">product category</label>
-
-                                    <select class="input" name="category">
-
-                                        @foreach($category as $category)
-                                            <option value="{{$category->category_name}}">
-                                                {{$category->category_name}}
-                                            </option>
-                                        @endforeach
-
-                                    </select>
-                                </div>
-
-
-
-
-                                <div class="group-input">
-                                    <label for="firstname" class="placeholder">Product Image </label>
+                                    <label for="firstname" >Product Image </label>
 
                                     <input id="" class="input" type="file" name="image" placeholder=" " />
                                 </div>
+                                <div >
+                                    <div class="row g-2">
+
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <select class="form-select" name="brand" id="floatingSelectGrid">
+                                                    @foreach($brand as $brand)
+                                                        <option value="{{$brand->brand_name}}">
+                                                            {{$brand->brand_name}}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="floatingSelectGrid">product brand</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <select class="form-select" id="floatingSelectGrid" name="size">
+                                                    <option >
+                                                        6
+                                                    </option>
+                                                    <option >
+                                                        6.5
+                                                    </option>
+                                                    <option>
+                                                        7
+                                                    </option>
+                                                    <option>
+                                                        7.5
+                                                    </option>
+                                                    <option>
+                                                        8
+                                                    </option>
+                                                    <option>
+                                                        8.5
+                                                    </option>
+                                                    <option>
+                                                        9
+                                                    </option>
+                                                </select>
+                                                <label for="floatingSelectGrid">Product Size</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <select class="form-select" name="category" id="floatingSelectGrid">
+                                                    @foreach($category as $category)
+                                                        <option value="{{$category->category_name}}">
+                                                            {{$category->category_name}}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="floatingSelectGrid">product category</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+
 
                                 <button type="text" class="site-btn">submit</button>
                             </form>

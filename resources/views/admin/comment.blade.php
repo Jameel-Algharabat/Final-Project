@@ -49,7 +49,7 @@
                                 <th>{{$comment->rate}}</th>
                                 <th>{{$comment->status}}</th>
                                 <th>
-                                    <a type="button" class="btn btn-outline-primary btn-fw" href="{{url('show_comment',$comment->id)}}">Show</a>
+                                    <a type="button" class="btn btn-outline-primary btn-fw" href="{{url('product_page',$comment->product_id)}}">Show</a>
                                 </th>
                                 <th>
                                     <a onclick="return confirm('Are You Sure To Delete This')" type="button" class="btn btn-outline-danger btn-fw" href="{{url('delete_comment',$comment->id)}}">Delete</a>

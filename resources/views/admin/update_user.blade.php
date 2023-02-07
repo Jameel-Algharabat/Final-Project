@@ -197,10 +197,10 @@
                                     <option value="{{$users->usertype}}">
                                         {{$users->usertype}}
                                     </option>
-                                        <option value="{{$users->usertype}}">
+                                        <option>
                                             0
                                         </option>
-                                    <option value="{{$users->usertype}}">
+                                    <option>
                                         1
                                     </option>
 

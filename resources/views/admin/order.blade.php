@@ -34,6 +34,7 @@
                             <th> Email </th>
                             <th> Phone </th>
                             <th>  Address</th>
+                            <th>  Size</th>
                             <th>  Product title </th>
                             <th> Quantity </th>
                             <th> Price </th>
@@ -50,6 +51,7 @@
                                 <th>{{$order->email}}</th>
                                 <th>{{$order->phone}}</th>
                                 <th>{{$order->address}}</th>
+                                <th>{{$order->size}}</th>
                                 <th>{{$order->product_title}}</th>
                                 <th>{{$order->quantity}}</th>
                                 <th>{{$order->price}}</th>

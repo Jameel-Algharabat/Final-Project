@@ -2,26 +2,8 @@
 <html lang="zxx">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Fashi Template">
-    <meta name="keywords" content="Fashi, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    @include('home.head')
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="home/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/themify-icons.css" type="text/css">
-    <link rel="stylesheet" href="home/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="home/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="home/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -67,6 +49,8 @@
                         <tr>
                             <th>Image</th>
                             <th class="p-name">Product Name</th>
+                            <th>Size</th>
+
                             <th>Price</th>
 
                             <th>Quantity</th>
@@ -81,6 +65,7 @@
                             <td class="cart-title first-row">
                                 <h5>{{$cart->product_title}}</h5>
                             </td>
+                            <td class="cart-title first-row">{{$cart->size}}</td>
                             <td class="p-price first-row">${{$cart->price}}</td>
                             <td class="total-price first-row">{{$cart->quantity}}</td>
                             <td class="close-td first-row"> <a href="{{url('/remove_cart',$cart->id)}}" onclick="return confirm('Are you sure to remove this product ?')"><i class="ti-close"></i></a></td>

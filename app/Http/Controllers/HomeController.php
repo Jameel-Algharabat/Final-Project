@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\brand;
+use App\Models\Contact;
 use App\Models\Delivered;
 use App\Models\usedShoes;
 use Illuminate\Auth\Events\Validated;
@@ -27,7 +28,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home.userpage');
+        $product=Product::paginate(5);
+        $UsedShoes=usedShoes::paginate(5);
+
+
+        return view('home.userpage',compact('product','UsedShoes'));
     }
 
 
@@ -85,22 +90,31 @@ class HomeController extends Controller
 
         else
         {
-            return view('home.userpage');
+            $product=Product::paginate(5);
+            $UsedShoes=usedShoes::paginate(5);
+            return view('home.userpage',compact('product','UsedShoes'));
         }
 
 
     }
     public function shop()
     {
+        $brand=brand::all();
         $product=product::paginate(9);
-        return view('home.shop',compact('product'));
+        return view('home.shop',compact('product','brand'));
     }
+//    public function home_page()
+//    {
+//        return view('/',compact('product'));
+//    }
+
 
     public function product_page($id)
     {
        $product=product::find($id);
+        $brand=brand::all();
         $reviews= comment::where('product_id',$id)->get();
-        return view('home.product_page',['reviews'=>$reviews],compact('product'));
+        return view('home.product_page',['reviews'=>$reviews],compact('product','brand'));
     }
 
     public function add_cart(Request $request,$id)
@@ -133,8 +147,9 @@ class HomeController extends Controller
 
             $cart->image=$products->image;
             $cart->product_id=$products->id;
-
+            $cart->size=$request->size;
             $cart->quantity=$request->quantity;
+
 
             $cart->save();
 
@@ -154,10 +169,11 @@ class HomeController extends Controller
         if (Auth::id())
         {
             $id=Auth::user()->id;
+            $cart_tt=cart::where('user_id','=',$id)->count();
 
             $cart=cart::where('user_id','=',$id)->get();
 
-            return view('home.showcart',compact('cart'));
+            return view('home.showcart',compact('cart','cart_tt'));
         }
         else
         {
@@ -191,6 +207,8 @@ class HomeController extends Controller
             $order->phone=$data->phone;
 
             $order->address=$data->address;
+
+            $order->size=$data->size;
 
             $order->user_id=$data->user_id;
 
@@ -230,20 +248,18 @@ class HomeController extends Controller
     public function product_search(Request $request)
     {
         $search_text=$request->search;
+        $brand=brand::all();
         $product=product::where('title','LIKE',"%$search_text%")->orwhere('category','LIKE',"%$search_text%")->orwhere('brand','LIKE',"%$search_text%")->paginate(10);
-        return view('home.shop',compact('product'));
+        return view('home.shop',compact('product','brand'));
     }
     public function UsedShoesSearch(Request $request)
     {
         $search_Used=$request->search;
-        $product=usedShoes::where('title','LIKE',"%$search_Used%")->orwhere('category','LIKE',"%$search_Used%")->orwhere('brand','LIKE',"%$search_Used%")->paginate(10);
-        return view('home.used_shoes',compact('product'));
+        $brand=brand::all();
+        $product=usedShoes::where('title','LIKE',"%$search_Used%")->orwhere('category','LIKE',"%$search_Used%")->orwhere('brand','LIKE',"%$search_Used%")->orwhere('size','LIKE',"%$search_Used%")->paginate(10);
+        return view('home.used_shoes',compact('product','brand'));
     }
-    public function contact()
-    {
 
-        return view('home.contact');
-    }
 
     public function comment(Request $request)
     {
@@ -297,9 +313,10 @@ class HomeController extends Controller
     }
     public function used_shoes()
     {
+        $brand=brand::all();
 
         $product=usedShoes::all();
-        return view('home.used_shoes',compact('product'));
+        return view('home.used_shoes',compact('product','brand'));
     }
 
     /////////////////////////////////////////
@@ -318,6 +335,7 @@ class HomeController extends Controller
 
         $product=new usedShoes();
         $product->user_id = Auth::id();
+        $product->user_phone=$request->user_phone;
         $product->title=$request->title;
         $product->description=$request->description;
         $product->price=$request->price;
@@ -339,8 +357,9 @@ class HomeController extends Controller
     public function used_product_page($id)
     {
         $product=usedShoes::find($id);
+        $brand=brand::all();
         $reviews= comment::where('product_id',$id)->get();
-        return view('home. used_product_page',['reviews'=>$reviews],compact('product'));
+        return view('home. used_product_page',['reviews'=>$reviews],compact('product','brand'));
     }
     public function delete_used_product($id)
     {
@@ -386,6 +405,25 @@ class HomeController extends Controller
 
         return redirect()->back();
 
+
+    }
+    public function contact()
+    {
+
+        return view('home.contact');
+    }
+    public function add_contact(Request $request)
+    {
+
+        $product=new Contact();
+        $product->name=$request->name;
+        $product->email=$request->email;
+        $product->message=$request->message;
+
+
+        $product->save();
+
+        return redirect()->back()->with('message','Product Added Successfully');
 
     }
 

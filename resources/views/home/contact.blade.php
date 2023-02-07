@@ -2,26 +2,8 @@
 <html lang="zxx">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Fashi Template">
-    <meta name="keywords" content="Fashi, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    @include('home.head')
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="home/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/themify-icons.css" type="text/css">
-    <link rel="stylesheet" href="home/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="home/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="home/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -114,34 +96,20 @@
                                 {{Session::get('success')}}
                             </div>
                         @endif
-                        <form action="" class="comment-form" method="POST" action="">
-                            {{ csrf_field() }}
+                        <form action="{{url('/add_contact')}}" class="comment-form" method="POST" action="">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <input type="text" class="{{ $errors->has('name') ? 'error' : '' }}" placeholder="Your name" id="name"  name="name" >
-                                    <!-- Error -->
-                                    @if ($errors->has('name'))
-                                        <div class="error">
-                                            {{ $errors->first('name') }}
-                                        </div>
-                                    @endif
+                                    <input type="text" class="" placeholder="Your name" id="name"  name="name" >
+
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" class="{{ $errors->has('email') ? 'error' : '' }}" placeholder="Your email" id="email" name="email" >
-                                    @if ($errors->has('email'))
-                                        <div class="error">
-                                            {{ $errors->first('email') }}
-                                        </div>
-                                    @endif
+                                    <input type="text" class="" placeholder="Your email" id="email" name="email" >
 
                                 </div>
                                 <div class="col-lg-12">
-                                    <textarea class=" {{ $errors->has('message') ? 'error' : '' }}" placeholder="Your message" name="message" id="message" ></textarea>
-                                    @if ($errors->has('message'))
-                                        <div class="error">
-                                            {{ $errors->first('message') }}
-                                        </div>
-                                    @endif
+                                    <textarea class="" placeholder="Your message" name="message" id="message" ></textarea>
+
                                     <button type="submit" name="send" class="site-btn" value="Send">Send message</button>
                                 </div>
                             </div>

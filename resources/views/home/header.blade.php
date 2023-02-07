@@ -73,17 +73,17 @@
                         <li class="heart-icon">
                             <a href="#">
                                 <i class="icon_heart_alt"></i>
-                                <span>1</span>
+{{--                                <span>1</span>--}}
                             </a>
                         </li>
                         <li class="cart-icon">
                             <a href="{{url('show_cart')}}">
                                 <i class="icon_bag_alt"></i>
-{{--                                <span></span>--}}
+{{--                                <span>{{$product->cart->count('id')}}</span>--}}
                             </a>
 
                         </li>
-                        <li class="cart-price">$0.00</li>
+{{--                        <li class="cart-price">$0.00</li>--}}
 
 
                     </ul>
@@ -93,13 +93,13 @@
     </div>
 
 
-    <div class="nav-item ">
+    <div class="nav-item">
         <div class="container">
             <div class="nav-depart ">
             </div>
-            <nav class="nav-menu mobile-menu ">
+            <nav class="nav-menu mobile-menu" >
                 <ul>
-                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="{{url('/shop')}}">Shop</a></li>
                     <li><a href="#">Collection</a>
                         <ul class="dropdown">

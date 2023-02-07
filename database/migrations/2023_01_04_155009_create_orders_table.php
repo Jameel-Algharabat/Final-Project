@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
+            $table->string('size')->nullable();
             $table->string('user_id')->nullable();
             $table->string('product_id')->nullable();
             $table->string('product_title')->nullable();

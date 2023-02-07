@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Contact;
 use App\Models\Delivered;
+use App\Models\usedShoes;
 use Illuminate\Http\Request;
 
 use App\Models\categories;
@@ -230,6 +232,8 @@ class AdminController extends Controller
 
             $delivered->price=$data->price;
 
+            $delivered->size=$data->size;
+
             $delivered->image=$data->image;
 
             $delivered->payment_status='cash on delivery';
@@ -324,9 +328,8 @@ class AdminController extends Controller
     public function show_comment($id)
     {
         $data= comment::find($id);
-        return view('admin.show_comment',[
-            'data' => $data
-        ]);
+        $product=Product::all();
+        return view('admin.show_comment',compact('data','product'));
 
     }
     public function profile()
@@ -334,6 +337,28 @@ class AdminController extends Controller
         return view('admin.profile');
     }
 
+    public function show_contact()
+    {
+        $contact=Contact::all();
+
+        return view('admin.show_contact',compact('contact'));
+    }
+
+    public function used_shoes_admin()
+    {
+        $product=usedShoes::all();
+        return view('admin.used_shoes',compact('product'));
+    }
+
+    public function delete_used_shoes_admin($id)
+    {
+        $product=usedShoes::find($id);
+
+        $product->delete();
+
+        return redirect()->back()->with('message','Product deleted Successfully');
+
+    }
 
 
 

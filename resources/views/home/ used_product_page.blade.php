@@ -2,27 +2,8 @@
 <html lang="zxx">
 
 <head>
-    <base href="/public">
-    <meta charset="UTF-8">
-    <meta name="description" content="Fashi Template">
-    <meta name="keywords" content="Fashi, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    @include('home.head')
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="home/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/themify-icons.css" type="text/css">
-    <link rel="stylesheet" href="home/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="home/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="home/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/style.css" type="text/css">
 </head>
 <style>
 
@@ -94,90 +75,8 @@
 <section class="product-shop spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
-                <div class="filter-widget">
-                    <h4 class="fw-title">Categories</h4>
-                    <ul class="filter-catagories">
-                        <li><a href="#">Men</a></li>
-                        <li><a href="#">Women</a></li>
-                        <li><a href="#">Kids</a></li>
-                    </ul>
-                </div>
-                <div class="filter-widget">
-                    <h4 class="fw-title">Brand</h4>
-                    <div class="fw-brand-check">
-                        <div class="bc-item">
-                            <label for="bc-calvin">
-                                Calvin Klein
-                                <input type="checkbox" id="bc-calvin">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div class="bc-item">
-                            <label for="bc-diesel">
-                                Diesel
-                                <input type="checkbox" id="bc-diesel">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div class="bc-item">
-                            <label for="bc-polo">
-                                Polo
-                                <input type="checkbox" id="bc-polo">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div class="bc-item">
-                            <label for="bc-tommy">
-                                Tommy Hilfiger
-                                <input type="checkbox" id="bc-tommy">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-widget">
-                    <h4 class="fw-title">Price</h4>
-                    <div class="filter-range-wrap">
-                        <div class="range-slider">
-                            <div class="price-input">
-                                <input type="text" id="minamount">
-                                <input type="text" id="maxamount">
-                            </div>
-                        </div>
-                        <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                             data-min="33" data-max="98">
-                            <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                            <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                        </div>
-                    </div>
-                    <a href="#" class="filter-btn">Filter</a>
-                </div>
+            @include('home.sidebar')
 
-                <div class="filter-widget">
-                    <h4 class="fw-title">Size</h4>
-                    <div class="fw-size-choose">
-                        <div class="sc-item">
-                            <input type="radio" id="s-size">
-                            <label for="s-size">s</label>
-                        </div>
-                        <div class="sc-item">
-                            <input type="radio" id="m-size">
-                            <label for="m-size">m</label>
-                        </div>
-                        <div class="sc-item">
-                            <input type="radio" id="l-size">
-                            <label for="l-size">l</label>
-                        </div>
-                        <div class="sc-item">
-                            <input type="radio" id="xs-size">
-                            <label for="xs-size">xs</label>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="">
 
@@ -189,18 +88,6 @@
                                     <i class="fa fa-search-plus"></i>
                                 </div>
                             </div>
-                            {{--                            <div class="product-thumbs">--}}
-                            {{--                                <div class="product-thumbs-track ps-slider owl-carousel">--}}
-                            {{--                                    <div class="pt active" data-imgbigurl="img/product-single/product-1.jpg"><img--}}
-                            {{--                                            src="img/product-single/product-1.jpg" alt=""></div>--}}
-                            {{--                                    <div class="pt" data-imgbigurl="img/product-single/product-2.jpg"><img--}}
-                            {{--                                            src="img/product-single/product-2.jpg" alt=""></div>--}}
-                            {{--                                    <div class="pt" data-imgbigurl="img/product-single/product-3.jpg"><img--}}
-                            {{--                                            src="img/product-single/product-3.jpg" alt=""></div>--}}
-                            {{--                                    <div class="pt" data-imgbigurl="img/product-single/product-3.jpg"><img--}}
-                            {{--                                            src="img/product-single/product-3.jpg" alt=""></div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
                         </div>
                         <div class="col-lg-6">
                             <div class="product-details">
@@ -225,61 +112,31 @@
 
                                         </h4>
                                 </div>
-                                {{--                                <div class="pd-color">--}}
-                                {{--                                    <h6>Color</h6>--}}
-                                {{--                                    <div class="pd-color-choose">--}}
-                                {{--                                        <div class="cc-item">--}}
-                                {{--                                            <input type="radio" id="cc-black">--}}
-                                {{--                                            <label for="cc-black"></label>--}}
-                                {{--                                        </div>--}}
-                                {{--                                        <div class="cc-item">--}}
-                                {{--                                            <input type="radio" id="cc-yellow">--}}
-                                {{--                                            <label for="cc-yellow" class="cc-yellow"></label>--}}
-                                {{--                                        </div>--}}
-                                {{--                                        <div class="cc-item">--}}
-                                {{--                                            <input type="radio" id="cc-violet">--}}
-                                {{--                                            <label for="cc-violet" class="cc-violet"></label>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
                                 <div class="pd-size-choose">
                                     <div class="sc-item">
-                                        <input type="radio" id="sm-size">
-                                        <label for="sm-size">s</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="md-size">
-                                        <label for="md-size">m</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="lg-size">
-                                        <label for="lg-size">l</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="xl-size">
-                                        <label for="xl-size">xs</label>
+                                        <label for="sm-size">{{$product->size}}</label>
                                     </div>
                                 </div>
-                                <form action="{{url('add_cart',$product->id)}}" method="POST">
+                                <form action="" method="POST">
                                     @csrf
                                     <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="number" value="1" min="1" name="quantity">
-                                        </div>
-                                        <input href="#" type="submit" value="Add To Cart" class="primary-btn pd-cart">
+{{--                                        <div class="pro-qty">--}}
+{{--                                        <a href="https://wa.me/962{{ Auth::user()->phone }}" type="submit" value="" class="primary-btn pd-cart">Add To Cart</a>--}}
+{{--                                        </div>--}}
+                                        <a href="https://wa.me/962{{$product->user_phone}}" target="_blank" type="submit" value="" class="primary-btn pd-cart" style="background-color: #2ed54a">Whats app</a>
                                     </div>
                                 </form>
                                 <ul class="pd-tags">
                                     <li><span>CATEGORIES</span> : {{$product->category}}</li>
-{{--                                    <li><span>Available quantity</span> : {{$product->quantity}}</li>--}}
+                                    <li><span>brand</span> : {{$product->brand}}</li>
                                 </ul>
                                 <div class="pd-share">
 
-                                    <div class="pd-social">
-                                        <a href="#"><i class="ti-facebook"></i></a>
-                                        <a href="#"><i class="ti-twitter-alt"></i></a>
-                                        <a href="#"><i class="ti-linkedin"></i></a>
-                                    </div>
+{{--                                    <div class="pd-social">--}}
+{{--                                        <a href="#"><i class="ti-facebook"></i></a>--}}
+{{--                                        <a href="#"><i class="ti-twitter-alt"></i></a>--}}
+{{--                                        <a href="#"><i class="ti-linkedin"></i></a>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
@@ -291,7 +148,7 @@
                             <ul class="nav" role="tablist" >
 
                                 <li style="margin: auto">
-                                    <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews (02)</a>
+                                    <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews</a>
                                 </li>
                             </ul>
                         </div>
@@ -299,7 +156,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade" id="tab-3" role="tabpanel">
                                     <div class="customer-review-option">
-                                        <h4>2 Comments</h4>
+                                        <h4> Comments</h4>
                                         <div class="comment-option">
                                             @foreach($reviews as $rs)
 

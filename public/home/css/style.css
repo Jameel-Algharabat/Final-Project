@@ -758,6 +758,7 @@ ol {
 	display: -ms-inline-flexbox;
 	display: inline-flex;
 	position: relative;
+    margin-left: 150px;
 
 }
 

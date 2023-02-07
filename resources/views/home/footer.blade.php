@@ -1,5 +1,5 @@
 <footer class="footer-section">
-    <div class="container" style="margin-left: 550px">
+    <div class="container m-auto">
         <div class="row">
             <div class="col-lg-3">
                 <div class="footer-left">

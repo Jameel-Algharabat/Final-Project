@@ -270,7 +270,7 @@
                 <span>nike yellow shoes</span>
                 <h3>nike metcon shoes</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat maiores et eos eaque veritatis aut laboriosam earum dolorem iste atque.</p>
-                <a href="#" class="btn">add to cart</a>
+                <a href="{{url('/shop')}}" class="btn">Shop now</a>
             </div>
             <div class="image">
                 <img src="img/slide/home-shoe-3.png" class="shoe" alt="">
@@ -285,7 +285,7 @@
                 <span>nike blue shoes</span>
                 <h3>nike metcon shoes</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat maiores et eos eaque veritatis aut laboriosam earum dolorem iste atque.</p>
-                <a href="#" class="btn">add to cart</a>
+                <a href="{{url('/shop')}}" class="btn">Shop now</a>
             </div>
             <div class="image">
                 <img src="img/slide/home-shoe-2.png" class="shoe" alt="">
@@ -300,7 +300,7 @@
                 <span>nike red shoes</span>
                 <h3>nike metcon shoes</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat maiores et eos eaque veritatis aut laboriosam earum dolorem iste atque.</p>
-                <a href="#" class="btn">add to cart</a>
+                <a href="{{url('/shop')}}" class="btn">Shop now</a>
             </div>
             <div class="image">
                 <img src="img/slide/home-shoe-1.png" class="shoe" alt="">

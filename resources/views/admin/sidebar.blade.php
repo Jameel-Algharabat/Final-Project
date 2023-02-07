@@ -1,24 +1,28 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-      <a class="sidebar-brand brand-logo" href="index.html"><img src="admin/assets/images/logo.svg" alt="logo" /></a>
-      <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="admin/assets/images/logo-mini.svg" alt="logo" /></a>
+    <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top" style="margin-left: 40px">
+      <a class="sidebar-brand brand-logo m-auto" href="/"><img src="img/logo - 2.png" style="height: 80px;width: 95px" alt="logo" /></a>
+      <a class="sidebar-brand brand-logo-mini" href="/"><img src="img/logo - 2.png" alt="logo" /></a>
     </div>
-    <ul class="nav">
+
+    <ul class="nav" style="margin-top: 30px">
       <li class="nav-item profile">
         <div class="profile-desc">
           <div class="profile-pic">
             <div class="count-indicator">
-              <img class="img-xs rounded-circle " src="admin/assets/images/faces/face15.jpg" alt="">
-              <span class="count bg-success"></span>
+              <img class="img-xs rounded-circle " src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" alt="">
+
+
+                <span class="count bg-success"></span>
             </div>
             <div class="profile-name">
-              <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-              <span>Gold Member</span>
+              <h5 class="mb-0 font-weight-normal">{{ Auth::user()->name }}</h5>
+              <span>Hi Admin</span>
             </div>
           </div>
+
           <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
           <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-            <a href="#" class="dropdown-item preview-item">
+            <a href="{{url('profile')}}" class="dropdown-item preview-item">
               <div class="preview-thumbnail">
                 <div class="preview-icon bg-dark rounded-circle">
                   <i class="mdi mdi-settings text-primary"></i>
@@ -26,28 +30,6 @@
               </div>
               <div class="preview-item-content">
                 <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-onepassword  text-info"></i>
-                </div>
-              </div>
-              <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-calendar-today text-success"></i>
-                </div>
-              </div>
-              <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
               </div>
             </a>
           </div>
@@ -120,6 +102,14 @@
                 <span class="menu-title">Brand</span>
             </a>
         </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('used_shoes_admin')}}">
+          <span class="menu-icon">
+              <i class="mdi mdi-comment-account"></i>
+          </span>
+                <span class="menu-title">Used Shoes</span>
+            </a>
+        </li>
 
         <li class="nav-item menu-items">
             <a class="nav-link" href="{{url('comment')}}">
@@ -131,21 +121,21 @@
         </li>
 
         <li class="nav-item menu-items">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{url('show_contact')}}">
           <span class="menu-icon">
               <i class="mdi mdi-comment-account"></i>
           </span>
                 <span class="menu-title">Contacts</span>
             </a>
         </li>
-        <li class="nav-item menu-items">
-            <a class="nav-link" href="{{url('profile')}}">
-          <span class="menu-icon">
-              <i class="mdi mdi-comment-account"></i>
-          </span>
-                <span class="menu-title">my</span>
-            </a>
-        </li>
+{{--        <li class="nav-item menu-items">--}}
+{{--            <a class="nav-link" href="{{url('profile')}}">--}}
+{{--          <span class="menu-icon">--}}
+{{--              <i class="mdi mdi-account-box-outline"></i>--}}
+{{--          </span>--}}
+{{--                <span class="menu-title">My Profile</span>--}}
+{{--            </a>--}}
+{{--        </li>--}}
     </ul>
 
 

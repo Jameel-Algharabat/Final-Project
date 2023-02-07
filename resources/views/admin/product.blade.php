@@ -183,7 +183,7 @@
                                     @endforeach
 
                                 </select>
-                                <label for="firstname"  class="placeholder">product catego ry</label>
+                                <label for="firstname"  class="placeholder">product category</label>
                             </div>
 
 {{--                            <div class="input-container ic1">--}}

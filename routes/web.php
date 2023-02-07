@@ -52,6 +52,7 @@ Route::get('/view_product', [AdminController::class, 'view_product']);
 Route::post('/add_product', [AdminController::class, 'add_product']);
 
 Route::get('/show_product', [AdminController::class, 'show_product']);
+Route::get('/show_contact', [AdminController::class, 'show_contact']);
 
 Route::get('/delete_product/{id}', [AdminController::class, 'delete_product']);
 
@@ -81,6 +82,8 @@ Route::get('/delete_comment/{id}', [AdminController::class, 'delete_comment']);
 Route::get('/show_comment/{id}', [AdminController::class, 'show_comment']);
 
 Route::get('/delivered_order/{id}', [AdminController::class, 'delivered_order']);
+Route::get('/used_shoes_admin', [AdminController::class, 'used_shoes_admin']);
+Route::get('/delete_used_shoes_admin/{id}', [AdminController::class, 'delete_used_shoes_admin']);
 
 
 
@@ -88,12 +91,9 @@ Route::get('/delivered_order/{id}', [AdminController::class, 'delivered_order'])
 //Route::get('/contact', [HomeController::class, 'createForm']);
 Route::post('/comment', [HomeController::class, 'comment'])->name('comment');
 
-
-
-
-
-
 Route::get('/shop', [HomeController::class, 'shop']);
+Route::get('/home_page', [HomeController::class, 'home_page']);
+
 
 
 
@@ -137,6 +137,7 @@ Route::get('/update_used_product/{id}', [HomeController::class, 'update_used_pro
 
 Route::post('/update_used_product_confirm/{id}', [HomeController::class, 'update_used_product_confirm']);
 
+Route::post('/add_contact', [HomeController::class, 'add_contact']);
 
 
 

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('used_shoes', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->integer('user_phone');
             $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->string('image')->nullable();

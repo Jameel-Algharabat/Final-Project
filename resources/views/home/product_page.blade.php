@@ -2,27 +2,8 @@
 <html lang="zxx">
 
 <head>
-    <base href="/public">
-    <meta charset="UTF-8">
-    <meta name="description" content="Fashi Template">
-    <meta name="keywords" content="Fashi, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    @include('home.head')
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="home/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/themify-icons.css" type="text/css">
-    <link rel="stylesheet" href="home/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="home/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="home/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="home/css/style.css" type="text/css">
 </head>
 <style>
 
@@ -94,90 +75,8 @@
 <section class="product-shop spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
-                <div class="filter-widget">
-                    <h4 class="fw-title">Categories</h4>
-                    <ul class="filter-catagories">
-                        <li><a href="#">Men</a></li>
-                        <li><a href="#">Women</a></li>
-                        <li><a href="#">Kids</a></li>
-                    </ul>
-                </div>
-                <div class="filter-widget">
-                    <h4 class="fw-title">Brand</h4>
-                    <div class="fw-brand-check">
-                        <div class="bc-item">
-                            <label for="bc-calvin">
-                                Calvin Klein
-                                <input type="checkbox" id="bc-calvin">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div class="bc-item">
-                            <label for="bc-diesel">
-                                Diesel
-                                <input type="checkbox" id="bc-diesel">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div class="bc-item">
-                            <label for="bc-polo">
-                                Polo
-                                <input type="checkbox" id="bc-polo">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div class="bc-item">
-                            <label for="bc-tommy">
-                                Tommy Hilfiger
-                                <input type="checkbox" id="bc-tommy">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-widget">
-                    <h4 class="fw-title">Price</h4>
-                    <div class="filter-range-wrap">
-                        <div class="range-slider">
-                            <div class="price-input">
-                                <input type="text" id="minamount">
-                                <input type="text" id="maxamount">
-                            </div>
-                        </div>
-                        <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                             data-min="33" data-max="98">
-                            <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                            <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                        </div>
-                    </div>
-                    <a href="#" class="filter-btn">Filter</a>
-                </div>
+            @include('home.sidebar')
 
-                <div class="filter-widget">
-                    <h4 class="fw-title">Size</h4>
-                    <div class="fw-size-choose">
-                        <div class="sc-item">
-                            <input type="radio" id="s-size">
-                            <label for="s-size">s</label>
-                        </div>
-                        <div class="sc-item">
-                            <input type="radio" id="m-size">
-                            <label for="m-size">m</label>
-                        </div>
-                        <div class="sc-item">
-                            <input type="radio" id="l-size">
-                            <label for="l-size">l</label>
-                        </div>
-                        <div class="sc-item">
-                            <input type="radio" id="xs-size">
-                            <label for="xs-size">xs</label>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="">
 
@@ -209,13 +108,17 @@
                                     <h3>{{$product->title}}</h3>
                                     <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>
                                 </div>
+                                @php
+                                    $average = $product->comment->average('rate');
+                                @endphp
+
                                 <div class="pd-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <span>(5)</span>
+                                    <i class="fa fa-star @if ($average<1) -o  @endif"></i>
+                                    <i class="fa fa-star @if ($average<2) -o  @endif"></i>
+                                    <i class="fa fa-star @if ($average<3) -o  @endif"></i>
+                                    <i class="fa fa-star @if ($average<4) -o  @endif"></i>
+                                    <i class="fa fa-star @if ($average<5) -o  @endif"></i>
+                                    <span>{{$product->comment->count('id')}}</span>
                                 </div>
                                 <div class="pd-desc">
                                     <p>Lorem ipsum dolor sit amet, consectetur ing elit, sed do eiusmod tempor sum dolor
@@ -229,43 +132,48 @@
 
                                         @endif</h4>
                                 </div>
-{{--                                <div class="pd-color">--}}
-{{--                                    <h6>Color</h6>--}}
-{{--                                    <div class="pd-color-choose">--}}
-{{--                                        <div class="cc-item">--}}
-{{--                                            <input type="radio" id="cc-black">--}}
-{{--                                            <label for="cc-black"></label>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="cc-item">--}}
-{{--                                            <input type="radio" id="cc-yellow">--}}
-{{--                                            <label for="cc-yellow" class="cc-yellow"></label>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="cc-item">--}}
-{{--                                            <input type="radio" id="cc-violet">--}}
-{{--                                            <label for="cc-violet" class="cc-violet"></label>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-                                <div class="pd-size-choose">
-                                    <div class="sc-item">
-                                        <input type="radio" id="sm-size">
-                                        <label for="sm-size">s</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="md-size">
-                                        <label for="md-size">m</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="lg-size">
-                                        <label for="lg-size">l</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="xl-size">
-                                        <label for="xl-size">xs</label>
-                                    </div>
-                                </div>
                                 <form action="{{url('add_cart',$product->id)}}" method="POST">
                                     @csrf
+                                <div class="pd-size-choose">
+                                    <div>
+                                    <div class="sc-item">
+                                        <input type="radio" id="6-size" value="6" name="size">
+                                        <label for="6-size">6</label>
+                                    </div>
+                                    <div class="sc-item">
+                                        <input type="radio" id="6.5-size" value="6.5" name="size">
+                                        <label for="6.5-size">6.5</label>
+                                    </div>
+                                    <div class="sc-item">
+                                        <input type="radio" id="7-size" value="7" name="size">
+                                        <label for="7-size">7</label>
+                                    </div>
+                                    <div class="sc-item">
+                                        <input type="radio" id="7.5-size" value="7.5" name="size">
+                                        <label for="7.5-size">7.5</label>
+                                    </div>
+                                </div>
+                                    <div>
+                                        <div class="sc-item">
+                                            <input type="radio" id="8-size" value="8" name="size">
+                                            <label for="8-size">8</label>
+                                        </div>
+                                        <div class="sc-item">
+                                            <input type="radio" id="md-size" value="8.5" name="size">
+                                            <label for="md-size">8.5</label>
+                                        </div>
+                                        <div class="sc-item">
+                                            <input type="radio" id="lg-size" value="9" name="size">
+                                            <label for="lg-size">9</label>
+                                        </div>
+                                        <div class="sc-item">
+                                            <input type="radio" id="xl-size" value="9.5" name="size">
+                                            <label for="xl-size">9.5</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                                 <div class="quantity">
                                     <div class="pro-qty">
                                         <input type="number" value="1" min="1" name="quantity">
@@ -279,11 +187,11 @@
                                 </ul>
                                 <div class="pd-share">
 
-                                    <div class="pd-social">
-                                        <a href="#"><i class="ti-facebook"></i></a>
-                                        <a href="#"><i class="ti-twitter-alt"></i></a>
-                                        <a href="#"><i class="ti-linkedin"></i></a>
-                                    </div>
+{{--                                    <div class="pd-social">--}}
+{{--                                        <a href="#"><i class="ti-facebook"></i></a>--}}
+{{--                                        <a href="#"><i class="ti-twitter-alt"></i></a>--}}
+{{--                                        <a href="#"><i class="ti-linkedin"></i></a>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
@@ -295,7 +203,7 @@
                             <ul class="nav" role="tablist" >
 
                                 <li style="margin: auto">
-                                    <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews (02)</a>
+                                    <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews ({{$product->comment->count('id')}})</a>
                                 </li>
                             </ul>
                         </div>
@@ -303,7 +211,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade" id="tab-3" role="tabpanel">
                                     <div class="customer-review-option">
-                                        <h4>2 Comments</h4>
+                                        <h4>{{$product->comment->count('id')}} Comments</h4>
                                         <div class="comment-option">
                                             @foreach($reviews as $rs)
 
@@ -312,12 +220,12 @@
                                                     <img src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" alt="">
                                                 </div>
                                                 <div class="avatar-text">
-                                                    <div class="at-rating">
-                                                        <i class="fa fa-star @if ($rs->rate<1)-o empty @endif"></i>
-                                                        <i class="fa fa-star @if ($rs->rate<2)-o empty @endif"></i>
-                                                        <i class="fa fa-star @if ($rs->rate<3)-o empty @endif"></i>
-                                                        <i class="fa fa-star @if ($rs->rate<4)-o empty @endif"></i>
-                                                        <i class="fa fa-star @if ($rs->rate<5)-o empty @endif"></i>
+                                                    <div class="at-rating ">
+                                                        <i class="fa fa-star @if ($rs->rate<1) -o empty @endif"></i>
+                                                        <i class="fa fa-star @if ($rs->rate<2) -o empty @endif"></i>
+                                                        <i class="fa fa-star @if ($rs->rate<3) -o empty @endif"></i>
+                                                        <i class="fa fa-star @if ($rs->rate<4) -o empty @endif"></i>
+                                                        <i class="fa fa-star @if ($rs->rate<5) -o empty @endif"></i>
                                                     </div>
                                                     <h5>{{$rs->user->name}} <span>{{$rs->created_at}}</span></h5>
                                                     <div class="at-reply">{{$rs->subject}}</div>
