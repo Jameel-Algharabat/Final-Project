@@ -6,7 +6,14 @@
 
 </head>
 
+<style>
+    .ex3 {
 
+        width: 310px;
+        height: 200px;
+        overflow: auto;
+    }
+</style>
 <body>
     <div class="container-scroller">
         <!-- partial:partials/_sidebar.html -->
@@ -25,13 +32,13 @@
                         </div>
                     @endif
 
-                    <div class="table-responsive center">
+                    <div class="table-responsive  center" >
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th> Product Image </th>
                                     <th> Product Title </th>
-                                    <th> Description </th>
+                                    <th > Description </th>
                                     <th> Quantity </th>
                                     <th>  Price </th>
                                     <th> Discount Price </th>
@@ -46,7 +53,7 @@
                             <tr>
                                 <th > <img src="/product/{{$product->image}}" ></th>
                                 <th> {{$product->title}} </th>
-                                <th> {{$product->description}} </th>
+                                <th><p class="ex3">{{$product->description}}</p>  </th>
                                 <th> {{$product->quantity}} </th>
                                 <th> {{$product->price}} </th>
                                 <th> {{$product->discount_price}} </th>
@@ -54,6 +61,9 @@
                                 <th> {{$product->brand}} </th>
 
                                 <th>
+
+
+
                                     <a onclick="return confirm('Are You Sure To Delete This')" type="button" class="btn btn-outline-danger btn-fw" href="{{url('delete_product',$product->id)}}">Delete</a>
                                     <br><br>
                                     <a type="button" class="btn btn-outline-primary btn-fw" href="{{url('update_product',$product->id)}}">Edit</a>
@@ -63,6 +73,8 @@
                             </tbody>
                         </table>
                     </div>
+{{--                        {!! $product->withQueryString()->links('pagination::bootstrap-5') !!}--}}
+
                 </div>
             </div>
         </div>

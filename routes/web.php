@@ -116,7 +116,7 @@ Route::get('/UsedShoesSearch', [HomeController::class, 'UsedShoesSearch']);
 
 Route::get('/user_profile', [HomeController::class, 'user_profile']);
 
-Route::get('/update_user', [HomeController::class, 'update_user']);
+Route::get('/user_update/{id}', [HomeController::class, 'user_update']);
 
 Route::get('/update_user_confirm', [HomeController::class, 'update_user_confirm']);
 

@@ -62,8 +62,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <a href="#"><i class="fa fa-home"></i> Home</a>
-                    <span>Shop</span>
+                    <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
+                    <a href="{{url('used_shoes')}}"> Used Shoes</a>
+
+                    <span>Product Page</span>
                 </div>
             </div>
         </div>
@@ -105,8 +107,7 @@
                                     <span>(5)</span>
                                 </div>
                                 <div class="pd-desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur ing elit, sed do eiusmod tempor sum dolor
-                                        sit amet, consectetur adipisicing elit, sed do mod tempor</p>
+                                    <p>{{$product->description}}</p>
                                     <h4>
                                             ${{$product->price}}
 

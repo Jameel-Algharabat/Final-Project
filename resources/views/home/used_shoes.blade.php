@@ -14,6 +14,8 @@
 
 <!-- Header Section Begin -->
 @include('home.header')
+@include('sweetalert::alert')
+
 <!-- Header End -->
 
 <!-- Breadcrumb Section Begin -->
@@ -22,8 +24,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <a href="#"><i class="fa fa-home"></i> Home</a>
-                    <span>Shop</span>
+                    <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
+                    <span>Used shoes</span>
                 </div>
             </div>
         </div>
@@ -64,7 +66,7 @@
                                         <div class="pi-pic">
                                             <img src="/product/{{$products->image}}" width="150px" height="250px" alt="">
                                             <div class="icon">
-                                                <i class="icon_heart_alt"></i>
+{{--                                                <i class="icon_heart_alt"></i>--}}
                                             </div>
                                             <ul>
                                                 {{--                                            <li class="w-icon active"><a href=""><i class="icon_bag_alt"></i></a></li>--}}
@@ -91,7 +93,7 @@
 {{--                                @endif--}}
                             @endforeach
                             @else
-                                <h3>This item is not available :(</h3>
+                                <h4>This item is not available :(</h4>
 
                             @endif
 

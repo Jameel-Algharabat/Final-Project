@@ -21,6 +21,8 @@ use App\Models\User;
 
 use App\Models\comment;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 class AdminController extends Controller
@@ -121,8 +123,9 @@ class AdminController extends Controller
         $product->image=$imagename;
 
         $product->save();
+        Alert::success('Product Added Successfully');
 
-        return redirect()->back()->with('message','Product Added Successfully');
+        return redirect()->back();
 
 
 
@@ -189,6 +192,9 @@ class AdminController extends Controller
 
         $product->save();
 
+        Alert::success('Product updated Successfully');
+
+
         return redirect()->back();
 
 
@@ -248,8 +254,9 @@ class AdminController extends Controller
 
 
         }
+        Alert::success('Order Delivered Successfully');
 
-        return redirect()->back()->with('message','We have Received your Order. we will connect with you soon...');
+        return redirect()->back();
 
 
     }
@@ -295,8 +302,9 @@ class AdminController extends Controller
 
 
         $users->save();
+        Alert::success('User updated Successfully');
 
-        return redirect()->back()->with('message','Product update Successfully');
+        return redirect()->back();
 
 
     }

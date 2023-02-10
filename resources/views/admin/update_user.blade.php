@@ -165,24 +165,24 @@
                         <form action="{{url('/update_user_confirm',$users->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="input-container ic1">
-                                <input id="" class="input" type="text" name="name" placeholder=" " value="{{$users->name}}"/>
+                                <input id="" class="input" type="text" name="name" placeholder=" " value="{{$users->name}}" required/>
                                 <div class="cut" ></div>
                                 <label for="firstname" class="placeholder">Name</label>
                             </div>
 
                             <div class="input-container ic1">
-                                <input id="" class="input" type="text" name="email" placeholder=" " value="{{$users->email}}" />
+                                <input id="" class="input" type="text" name="email" placeholder=" " value="{{$users->email}}" required/>
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Email</label>
                             </div>
 
                             <div class="input-container ic1">
-                                <input id="" class="input" type="number" name="phone" placeholder=" " value="{{$users->phone}}"/>
+                                <input id="" class="input" type="number" name="phone" placeholder=" " value="{{$users->phone}}"required/>
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Phone</label>
                             </div>
                             <div class="input-container ic1">
-                                <input id="" class="input" type="text" name="address" placeholder=" " value="{{$users->address}}" />
+                                <input id="" class="input" type="text" name="address" placeholder=" " value="{{$users->address}}" required/>
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Address</label>
                             </div>

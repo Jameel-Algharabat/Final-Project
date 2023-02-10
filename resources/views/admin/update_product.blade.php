@@ -149,6 +149,8 @@
     <!-- partial -->
     <!-- partial:partials/_navbar.html -->
     @include('admin.header')
+    @include('sweetalert::alert')
+
     <div class="container-fluid page-body-wrapper">
         <div class="main-panel">
             <div class="content-wrapper">
@@ -165,21 +167,21 @@
                         <form action="{{url('/update_product_confirm',$product->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="input-container ic1">
-                                <input id="" class="input" type="text" name="title" placeholder=" " value="{{$product->title}}"/>
+                                <input id="" class="input" type="text" name="title" placeholder=" " value="{{$product->title}}" required/>
                                 <div class="cut" ></div>
                                 <label for="firstname" class="placeholder">Product Title </label>
                             </div>
 
                             <div class="input-container ic1">
-                                <input id="" class="input" type="text" name="description" placeholder=" " value="{{$product->description}}" />
+                                <input id="" class="input" type="text" name="description" placeholder=" " value="{{$product->description}}" required/>
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Product Description</label>
                             </div>
 
                             <div class="input-container ic1">
-                                <input id="" class="input" type="number" name="price" placeholder=" " value="{{$product->price}}"/>
+                                <input id="" class="input" type="number" name="price" placeholder=" " value="{{$product->price}}"required/>
                                 <div class="cut"></div>
-                                <label for="firstname" class="placeholder">Product price </label>
+                                <label for="firstname" class="placeholder">Product Price </label>
                             </div>
                             <div class="input-container ic1">
                                 <input id="" class="input" type="number" name="dis_price" placeholder=" " value="{{$product->discount_price}}" />
@@ -188,18 +190,15 @@
                             </div>
 
                             <div class="input-container ic1">
-                                <input id="" class="input" type="number" name="quantity" placeholder=" " value="{{$product->quantity}}"/>
+                                <input id="" class="input" type="number" name="quantity" placeholder=" " value="{{$product->quantity}}"required/>
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Product Quantity </label>
                             </div>
 
                             <div class="input-container ic1">
-                                <input id="" class="input" type="file" name="image" placeholder=" " />
+                                <input id="" class="input" type="file" name="image" placeholder=" " required/>
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Product Image </label>
-                            </div>
-                            <div class="input-container ic1">
-                                <label for="firstname"  class="placeholder">Product Size</label>
                             </div>
 
                             <div class="input-container ic1">
@@ -218,7 +217,7 @@
 
 
                                 </select>
-                                <label for="firstname"  class="placeholder">product category</label>
+                                <label for="firstname"  class="placeholder">Product Brand</label>
                             </div>
 
 
@@ -241,7 +240,7 @@
 
 
                                 </select>
-                                <label for="firstname"  class="placeholder">product category</label>
+                                <label for="firstname"  class="placeholder">Product Category</label>
                             </div>
 
 

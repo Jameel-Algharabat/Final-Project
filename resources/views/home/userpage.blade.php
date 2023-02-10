@@ -80,12 +80,12 @@
                             <div class="pi-pic">
                                 <img src="/product/{{$products->image}}" alt="">
                                 <div class="icon">
-                                    <i class="icon_heart_alt"></i>
+{{--                                    <i class="icon_heart_alt"></i>--}}
                                 </div>
                                 <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+{{--                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>--}}
                                     <li class="quick-view"><a href="{{url('product_page',$products->id)}}">+ Quick View</a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+{{--                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>--}}
                                 </ul>
                             </div>
                             <div class="pi-text">
@@ -146,12 +146,12 @@
                                 <div class="pi-pic">
                                     <img src="/product/{{$UsedShoes->image}}" alt="">
                                     <div class="icon">
-                                        <i class="icon_heart_alt"></i>
+{{--                                        <i class="icon_heart_alt"></i>--}}
                                     </div>
                                     <ul>
-                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+{{--                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>--}}
                                         <li class="quick-view"><a href="{{url('used_product_page',$UsedShoes->id)}}">+ Quick View</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+{{--                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>--}}
                                     </ul>
                                 </div>
                                 <div class="pi-text">

@@ -62,17 +62,20 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
                                 @else
                                     {{-- <i class="fa fa-user"></i> --}}
 
                                     <a href="{{ route('login') }}" class="login-panel">Login</a>
                                     {{-- <a href="{{ route('register') }}" class="login-panel">register</a> --}}
                                 @endauth
+
+
                             @endif
                         </li>
                         <li class="heart-icon">
                             <a href="#">
-                                <i class="icon_heart_alt"></i>
+{{--                                <i class="icon_heart_alt"></i>--}}
 {{--                                <span>1</span>--}}
                             </a>
                         </li>
@@ -97,20 +100,21 @@
         <div class="container">
             <div class="nav-depart ">
             </div>
+            <div id="mobile-menu-wrap"></div>
+
             <nav class="nav-menu mobile-menu" >
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="{{url('/shop')}}">Shop</a></li>
-                    <li><a href="#">Collection</a>
-                        <ul class="dropdown">
-                            <li><a href="#">Men's</a></li>
-                            <li><a href="#">Women's</a></li>
-                            <li><a href="#">Kid's</a></li>
-                        </ul>
-                    </li>
+{{--                    <li><a href="#">Collection</a>--}}
+{{--                        <ul class="dropdown">--}}
+{{--                            <li><a href="#">Men's</a></li>--}}
+{{--                            <li><a href="#">Women's</a></li>--}}
+{{--                            <li><a href="#">Kid's</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
                     <li><a href="{{url('/used_shoes')}}">used shoes</a></li>
                     <li><a href="{{url('/contact')}}">Contact</a></li>
-
                 </ul>
             </nav>
             <div id="mobile-menu-wrap"></div>

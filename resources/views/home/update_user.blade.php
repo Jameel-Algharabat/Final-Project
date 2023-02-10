@@ -15,6 +15,7 @@
 <!-- Header Section Begin -->
 @include('home.header')
 <!-- Header End -->
+@include('sweetalert::alert')
 
 <!-- Breadcrumb Section Begin -->
 <div class="breacrumb-section">
@@ -22,8 +23,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <a href="#"><i class="fa fa-home"></i> Home</a>
-                    <span>Shop</span>
+                    <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
+                    <a href="{{url('user_profile')}}"> Profile</a>
+                    <span>Update Profile</span>
                 </div>
             </div>
         </div>
@@ -33,24 +35,24 @@
 
 <!-- Product Shop Section Begin -->
 <section class="product-shop spad">
-    <div class="container">
+    <div class="container ">
         <div class="container">
             <div class="main-body">
-                <div class="row">
-                    <div class="col-lg-8">
+                <div class="row" style="margin-left: 250px">
+                    <div class="col-lg-10">
                         <div class="card">
                             <div class="card-body">
+                                <form action="{{url('/update_user_confirm',Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                 <div class="row mb-3">
+
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Full Name</h6>
+
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control" autocomplete="name" name="name" value="{{ Auth::user()->name }}">
-                                        @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <input type="text" class="form-control" autocomplete="name" name="name" value="{{ Auth::user()->name }}" required>
+
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -58,7 +60,7 @@
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control" value="{{ Auth::user()->email }}">
+                                        <input type="text" class="form-control" name="email" value="{{ Auth::user()->email }}"required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -66,7 +68,7 @@
                                         <h6 class="mb-0">Phone</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control" value="{{ Auth::user()->phone }}">
+                                        <input type="text" class="form-control" name="phone" value="{{ Auth::user()->phone }}"required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -74,7 +76,7 @@
                                         <h6 class="mb-0">Address</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control" value="{{ Auth::user()->address }}">
+                                        <input type="text" class="form-control" name="address" value=" {{ Auth::user()->address }}"required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -85,6 +87,7 @@
                                         </a>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -24,6 +24,8 @@ use App\Models\Product;
 use App\Models\Cart;
 
 use App\Models\Order;
+
+use RealRashid\SweetAlert\Facades\Alert;
 class HomeController extends Controller
 {
     public function index()
@@ -152,7 +154,7 @@ class HomeController extends Controller
 
 
             $cart->save();
-
+            Alert::success('The item has been added to the cart');
             return redirect()->back();
 
 
@@ -186,6 +188,7 @@ class HomeController extends Controller
     {
         $cart=cart::find($id);
         $cart->delete();
+
         return redirect()->back();
 
     }
@@ -234,16 +237,18 @@ class HomeController extends Controller
 
 
         }
-        return redirect()->back()->with('message','We have Received your Order. we will connect with you soon...');
+        Alert::success('We have Received your Order, we will connect with you soon...');
+
+        return redirect()->back();
 
 
     }
 
-    public function stripe($totalprice)
-    {
-
-        return view('home.stripe');
-    }
+//    public function stripe($totalprice)
+//    {
+//
+//        return view('home.stripe');
+//    }
 
     public function product_search(Request $request)
     {
@@ -294,22 +299,31 @@ class HomeController extends Controller
 
         return view('home.user_profile',compact('users','product'));
     }
-    public function update_user()
+    public function user_update()
     {
 
         return view('home.update_user');
     }
 
-    public function update_user_confirm(Request $request)
+    public function update_user_confirm(Request $request, $id)
     {
-        $validated =Validated::make($request->all(),[
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'min:10','max:10'],
-            'address' => ['required', 'max:50'],
-        ]);
+        $user=User::find($id);
+
+        $user->name=$request->name;
+
+        $user->email=$request->email;
+
+        $user->phone=$request->phone;
+
+        $user->address=$request->address;
+
+
+
+        $user->save();
 
         return redirect()->back()->with('message','Product update Successfully');
+
+
     }
     public function used_shoes()
     {
@@ -350,8 +364,10 @@ class HomeController extends Controller
         $product->image=$imagename;
 
         $product->save();
+        Alert::success('Product Added Successfully');
 
-        return redirect()->back()->with('message','Product Added Successfully');
+
+        return redirect()->back();
 
     }
     public function used_product_page($id)
@@ -402,7 +418,7 @@ class HomeController extends Controller
         }
 
         $product->save();
-
+        Alert::success('Your product has been updated');
         return redirect()->back();
 
 
@@ -422,7 +438,7 @@ class HomeController extends Controller
 
 
         $product->save();
-
+        Alert::success('Thank you for contacting us. If there are any problems, we will contact you soon');
         return redirect()->back()->with('message','Product Added Successfully');
 
     }

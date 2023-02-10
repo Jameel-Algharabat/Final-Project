@@ -15,6 +15,7 @@
 <!-- Header Section Begin -->
 @include('home.header')
 <!-- Header End -->
+@include('sweetalert::alert')
 
 <!-- Breadcrumb Section Begin -->
 <div class="breacrumb-section">
@@ -22,7 +23,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <a href="#"><i class="fa fa-home"></i> Home</a>
+                    <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
                     <span>Contact</span>
                 </div>
             </div>
@@ -52,8 +53,7 @@
             <div class="col-lg-5">
                 <div class="contact-title">
                     <h4>Contacts Us</h4>
-                    <p>Contrary to popular belief, Lorem Ipsum is simply random text. It has roots in a piece of
-                        classical Latin literature from 45 BC, maki years old.</p>
+                    <p>You can contact us if you face any problems and difficulties, or to inquire about the company, you can contact us.</p>
                 </div>
                 <div class="contact-widget">
                     <div class="cw-item">
@@ -100,15 +100,15 @@
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <input type="text" class="" placeholder="Your name" id="name"  name="name" >
+                                    <input type="text" class="" placeholder="Your name" id="name"  name="name" required >
 
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" class="" placeholder="Your email" id="email" name="email" >
+                                    <input type="email" class="" placeholder="Your email" id="email" name="email" required>
 
                                 </div>
                                 <div class="col-lg-12">
-                                    <textarea class="" placeholder="Your message" name="message" id="message" ></textarea>
+                                    <textarea class="" placeholder="Your message" name="message" id="message"required ></textarea>
 
                                     <button type="submit" name="send" class="site-btn" value="Send">Send message</button>
                                 </div>

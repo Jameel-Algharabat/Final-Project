@@ -22,8 +22,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <a href="#"><i class="fa fa-home"></i> Home</a>
-                    <span>Shop</span>
+                    <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
+                    <span>Profile</span>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
 <!-- Breadcrumb Section Begin -->
 
 <!-- Product Shop Section Begin -->
-<section class="product-shop spad">
+<section class="product-shop spad ">
     <div class="container">
         <div class="container">
             <div class="main-body">
@@ -110,7 +110,7 @@
 
                                 <div style="margin-top: 40px" class="row">
                                     <div class="col-sm-12">
-                                        <a class="site-btn register-btn"  href="{{url('update_user')}}">Edit</a>
+                                        <a class="site-btn register-btn"  href="{{url('user_update',Auth::user()->id)}}">Edit</a>
                                     </div>
                                 </div>
                             </div>

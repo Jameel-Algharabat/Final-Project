@@ -163,28 +163,17 @@
                         <form action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="input-container ic1">
-                                <input id="" class="input" type="text" name="title" placeholder=" " />
+                                <input id="" class="input" type="text" name="title" placeholder=" " required/>
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Product Title </label>
                             </div>
 
                             <div class="input-container ic1">
-                                <input id="" class="input" type="text" name="description" placeholder=" " />
+                                <input id="" class="input" type="text" name="description" placeholder=" "required />
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Product Description</label>
                             </div>
-                            <div class="input-container ic1">
-                                <select class="input" name="brand">
 
-                                    @foreach($brand as $brand)
-                                        <option value="{{$brand->brand_name}}">
-                                            {{$brand->brand_name}}
-                                        </option>
-                                    @endforeach
-
-                                </select>
-                                <label for="firstname"  class="placeholder">product category</label>
-                            </div>
 
 {{--                            <div class="input-container ic1">--}}
 {{--                                <select class="input" name="size">--}}
@@ -211,9 +200,9 @@
 {{--                            </div>--}}
 
                             <div class="input-container ic1">
-                                <input id="" class="input" type="number" name="price" placeholder=" " />
+                                <input id="" class="input" type="number" name="price" placeholder=" "required />
                                 <div class="cut"></div>
-                                <label for="firstname" class="placeholder">Product price </label>
+                                <label for="firstname" class="placeholder">Product Price </label>
                             </div>
                             <div class="input-container ic1">
                                 <input id="" class="input" type="number" name="dis_price" placeholder=" " />
@@ -222,17 +211,28 @@
                             </div>
 
                             <div class="input-container ic1">
-                                <input id="" class="input" type="number" name="quantity" placeholder=" " />
+                                <input id="" class="input" type="number" name="quantity" placeholder=" " required/>
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Product Quantity </label>
                             </div>
 
                             <div class="input-container ic1">
-                                <input id="" class="input" type="file" name="image" placeholder=" " />
+                                <input id="" class="input" type="file" name="image" placeholder=" "required />
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Product Image </label>
                             </div>
+                            <div class="input-container ic1">
+                                <select class="input" name="brand">
 
+                                    @foreach($brand as $brand)
+                                        <option value="{{$brand->brand_name}}">
+                                            {{$brand->brand_name}}
+                                        </option>
+                                    @endforeach
+
+                                </select>
+                                <label for="firstname"  class="placeholder">Product Brand</label>
+                            </div>
 
 
                             <div class="input-container ic1">

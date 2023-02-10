@@ -54,6 +54,9 @@
 
 <!-- Header Section Begin -->
 @include('home.header')
+
+@include('sweetalert::alert')
+
 <!-- Header End -->
 
 <!-- Breadcrumb Section Begin -->
@@ -62,8 +65,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <a href="#"><i class="fa fa-home"></i> Home</a>
-                    <span>Shop</span>
+                    <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
+                    <a href="{{url('shop')}}">Shop</a>
+                    <span>Product Page</span>
                 </div>
             </div>
         </div>
@@ -106,7 +110,7 @@
                                 <div class="pd-title">
                                     <span>{{$product->category}}</span>
                                     <h3>{{$product->title}}</h3>
-                                    <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>
+{{--                                    <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>--}}
                                 </div>
                                 @php
                                     $average = $product->comment->average('rate');
@@ -118,11 +122,11 @@
                                     <i class="fa fa-star @if ($average<3) -o  @endif"></i>
                                     <i class="fa fa-star @if ($average<4) -o  @endif"></i>
                                     <i class="fa fa-star @if ($average<5) -o  @endif"></i>
-                                    <span>{{$product->comment->count('id')}}</span>
+                                    <span>({{$product->comment->count('id')}})</span>
                                 </div>
                                 <div class="pd-desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur ing elit, sed do eiusmod tempor sum dolor
-                                        sit amet, consectetur adipisicing elit, sed do mod tempor</p>
+                                    <p>{{$product->description}}</p>
+
                                     <h4>@if($product->discount_price!=null)
                                             ${{$product->discount_price}}
                                             <span>${{$product->price}}</span>
@@ -134,7 +138,7 @@
                                 </div>
                                 <form action="{{url('add_cart',$product->id)}}" method="POST">
                                     @csrf
-                                <div class="pd-size-choose">
+                                <div class="pd-size-choose" >
                                     <div>
                                     <div class="sc-item">
                                         <input type="radio" id="6-size" value="6" name="size">
@@ -145,7 +149,7 @@
                                         <label for="6.5-size">6.5</label>
                                     </div>
                                     <div class="sc-item">
-                                        <input type="radio" id="7-size" value="7" name="size">
+                                        <input checked type="radio" id="7-size" value="7" name="size">
                                         <label for="7-size">7</label>
                                     </div>
                                     <div class="sc-item">
@@ -182,6 +186,7 @@
                                 </div>
                                 </form>
                                 <ul class="pd-tags">
+                                    <li><span>brand</span> : {{$product->brand}}</li>
                                     <li><span>CATEGORIES</span> : {{$product->category}}</li>
                                     <li><span>Available quantity</span> : {{$product->quantity}}</li>
                                 </ul>
@@ -297,7 +302,16 @@
 <!-- Footer Section End -->
 
 <!-- Js Plugins -->
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var scrollpos = localStorage.getItem('scrollpos');
+        if (scrollpos) window.scrollTo(0, scrollpos);
+    });
 
+    window.onbeforeunload = function(e) {
+        localStorage.setItem('scrollpos', window.scrollY);
+    };
+</script>
 <script src="home/js/jquery-3.3.1.min.js"></script>
 <script src="home/js/bootstrap.min.js"></script>
 <script src="home/js/jquery-ui.min.js"></script>

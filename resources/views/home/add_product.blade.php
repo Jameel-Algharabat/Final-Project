@@ -18,6 +18,7 @@
 <!-- Header Section Begin -->
 @include('home.header')
 <!-- Header End -->
+@include('sweetalert::alert')
 
 <!-- Breadcrumb Section Begin -->
 <div class="breacrumb-section">
@@ -25,8 +26,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <a href="#"><i class="fa fa-home"></i> Home</a>
-                    <span>Shop</span>
+                    <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
+                    <a href="{{url('user_profile')}}"> Profile</a>
+                    <span>Add Product</span>
                 </div>
             </div>
         </div>
@@ -60,29 +62,29 @@
 
                                 <div class="group-input">
                                     <span>Product Title</span>
-                                    <input id="" class="input" type="text" name="title" placeholder=" " />
+                                    <input id="" class="input" type="text" name="title" placeholder=" " required/>
                                 </div>
 
                                 <div class="group-input">
                                     <label for="firstname" >Product Description</label>
-                                    <input id="" class="input" type="text" name="description" placeholder=" " />
+                                    <input id="" class="input" type="text" name="description" placeholder=" " required/>
                                 </div>
                                 <div class="group-input">
                                     <label for="firstname" >Product price </label>
 
-                                    <input id="" class="input" type="number" name="price" placeholder=" " />
+                                    <input id="" class="input" type="number" name="price" placeholder=" " required />
                                     <div class="cut"></div>
                                 </div>
                                 <div class="group-input">
                                     <label for="firstname" >phone</label>
 
-                                    <input id="" class="input" type="number" name="user_phone" placeholder=" " />
+                                    <input id="" class="input" type="number" name="user_phone" placeholder=" " required/>
                                     <div class="cut"></div>
                                 </div>
                                 <div class="group-input">
                                     <label for="firstname" >Product Image </label>
 
-                                    <input id="" class="input" type="file" name="image" placeholder=" " />
+                                    <input id="" class="input" type="file" name="image" placeholder=" " required />
                                 </div>
                                 <div >
                                     <div class="row g-2">

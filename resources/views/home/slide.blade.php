@@ -267,9 +267,9 @@
     <div class="slide-container active">
         <div class="slide">
             <div class="content">
-                <span>nike yellow shoes</span>
-                <h3>nike metcon shoes</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat maiores et eos eaque veritatis aut laboriosam earum dolorem iste atque.</p>
+                <span>My shoes</span>
+                <h3>Welcome to My Shoes</h3>
+                <p>Website for buying and selling shoes. You can buy shoes from approved international brands such as Nike, Adidas and many other international brands</p>
                 <a href="{{url('/shop')}}" class="btn">Shop now</a>
             </div>
             <div class="image">
@@ -282,10 +282,10 @@
     <div class="slide-container">
         <div class="slide">
             <div class="content">
-                <span>nike blue shoes</span>
-                <h3>nike metcon shoes</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat maiores et eos eaque veritatis aut laboriosam earum dolorem iste atque.</p>
-                <a href="{{url('/shop')}}" class="btn">Shop now</a>
+                <span>My shoes</span>
+                <h3>Special section in used shoes</h3>
+                <p>also possible to buy used shoes of all kinds, shapes and colors You can also sell or display your old and new shoes</p>
+                <a href="{{url('/used_shoes')}}" class="btn">Shop now</a>
             </div>
             <div class="image">
                 <img src="img/slide/home-shoe-2.png" class="shoe" alt="">
@@ -297,9 +297,9 @@
     <div class="slide-container">
         <div class="slide">
             <div class="content">
-                <span>nike red shoes</span>
-                <h3>nike metcon shoes</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat maiores et eos eaque veritatis aut laboriosam earum dolorem iste atque.</p>
+                <span>My shoes</span>
+                <h3>What are you waiting for shop now</h3>
+                <p></p>
                 <a href="{{url('/shop')}}" class="btn">Shop now</a>
             </div>
             <div class="image">

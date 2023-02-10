@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <a href="#"><i class="fa fa-home"></i> Home</a>
+                        <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
                         <span>Shop</span>
                     </div>
                 </div>
@@ -63,9 +63,9 @@
                                            <a ></a>
                                         </div>
                                         <ul>
-                                            <li class="w-icon active"><a href="{{url('add_cart',$products->id)}}"><i class="icon_bag_alt"></i></a></li>
+{{--                                            <li class="w-icon active"><a href="{{url('add_cart',$products->id)}}"><i class="icon_bag_alt"></i></a></li>--}}
                                             <li class="quick-view"><a href="{{url('product_page',$products->id)}}">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+{{--                                            <li class="w-icon"><a href="#"><i class="icon_heart_alt"></i></a></li>--}}
                                         </ul>
                                     </div>
                                     <div class="pi-text">
@@ -98,11 +98,7 @@
 
 
 
-                            <span style="color: #0a0a0a; margin: auto; " >
 
-{{--                                {!! $product->withQueryString()->links('pagination::bootstrap-5') !!}--}}
-
-                            </span>
 
                         </div>
                     </div>
@@ -112,9 +108,15 @@
 {{--                            Loading More--}}
 {{--                        </a>--}}
 {{--                    </div>--}}
+                        <span style="color: #0a0a0a; margin: auto; " >
+
+                                {!! $product->withQueryString()->links('pagination::bootstrap-5') !!}
+
+                            </span>
                 </div>
             </div>
         </div>
+
     </section>
     <!-- Product Shop Section End -->
 

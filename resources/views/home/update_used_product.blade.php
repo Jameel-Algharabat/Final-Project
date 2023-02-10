@@ -16,6 +16,8 @@
 
     <!-- Header Section Begin -->
     @include('home.header')
+    @include('sweetalert::alert')
+
     <!-- Header End -->
 
     <!-- Breadcrumb Section Begin -->
@@ -24,8 +26,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <a href="#"><i class="fa fa-home"></i> Home</a>
-                        <span>Shop</span>
+                        <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
+                        <a href="{{url('user_profile')}}"> Profile</a>
+                        <span>Update Product</span>
                     </div>
                 </div>
             </div>
@@ -58,24 +61,24 @@
                                 <div class="group-input">
                                     <span>Product Title</span>
                                     <input id="" class="input" type="text" name="title" placeholder=" "
-                                        value="{{ $product->title }}" />
+                                        value="{{ $product->title }}" required/>
                                 </div>
                                 <div class="group-input">
                                     <label for="firstname">Product Description</label>
                                     <input id="" class="input" type="text" name="description"
-                                        placeholder=" " value="{{ $product->description }}" />
+                                        placeholder=" " value="{{ $product->description }}" required />
                                 </div>
                                 <div class="group-input">
                                     <label for="firstname">Product price </label>
                                     <input id="" class="input" type="number" name="price" placeholder=" "
-                                        value="{{ $product->price }}" />
+                                        value="{{ $product->price }}" required />
                                     <div class="cut"></div>
                                 </div>
                                 <div class="group-input">
                                     <label for="firstname">phone</label>
 
                                     <input id="" class="input" type="number" name="user_phone"
-                                        placeholder=" " value="{{ $product->user_phone }}" />
+                                        placeholder=" " value="{{ $product->user_phone }}" required />
                                     <div class="cut"></div>
 
                                     <div class="cut"></div>
@@ -83,7 +86,7 @@
                                 <div class="group-input">
                                     <label for="firstname">Product Image </label>
 
-                                    <input id="" class="input" type="file" name="image" placeholder=" "
+                                    <input id="" class="input" type="file" name="image" required placeholder=" "
                                            value="{{ $product->image }}" />
                                 </div>
                                 <div>
@@ -111,22 +114,27 @@
                                                     <option value="{{ $product->size }}">
                                                         {{ $product->size }}
                                                     </option>
-
-                                                    <option>
-                                                        XS
-                                                    </option>
-                                                    <option>
-                                                        S
-                                                    </option>
-                                                    <option>
-                                                        M
-                                                    </option>
-                                                    <option>
-                                                        L
-                                                    </option>
-                                                    <option>
-                                                        XL
-                                                    </option>
+                                                        <option >
+                                                            6
+                                                        </option>
+                                                        <option >
+                                                            6.5
+                                                        </option>
+                                                        <option>
+                                                            7
+                                                        </option>
+                                                        <option>
+                                                            7.5
+                                                        </option>
+                                                        <option>
+                                                            8
+                                                        </option>
+                                                        <option>
+                                                            8.5
+                                                        </option>
+                                                        <option>
+                                                            9
+                                                        </option>
                                                 </select>
                                                 <label for="floatingSelectGrid">Product Size</label>
                                             </div>
